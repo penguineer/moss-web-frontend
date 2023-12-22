@@ -84,25 +84,5 @@ img.avatar-large {
   position: absolute;
   top: 30px;
   right: -5px;
-  background-color: black;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  min-width: 10em;
-  padding: 10px;
   z-index: 1;
-}
-
-.menu ul {
-  padding: 0;
-  margin: 0;
-}
-
-.menu li {
-  list-style-type: none;
-
-  padding-left: 1em;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  
-  text-align: left;
 }

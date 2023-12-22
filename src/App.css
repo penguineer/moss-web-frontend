@@ -1,9 +1,4 @@
 .App {
-  text-align: center;
-}
-
-body {
-  background-color: #282c34;
 }
 
 .App-logo {
@@ -17,23 +12,23 @@ body {
   }
 }
 
+p {
+  text-align: justify;
+}
+
 .App-header {
-  background-color: #282c34;
   min-height: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   font-size: calc(8px + 1vmin);
-  color: white;
   padding-right: 1em;
 }
 
 footer {
-  background-color: #282c34;
   min-height: 1.5vh;
   font-size: 1.5vmin;
-  color: white;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -42,18 +37,18 @@ footer {
 }
 
 footer > a {
-  color: gray;
   text-decoration: none;
 }
 
 div#content {
-  background-color: darkslategray;
   min-height: calc(97.5vh - 110px);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+}
+
+div#content > div {
+  padding: 1em;
+  min-width: 800px;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
 div#content > div.text-content {
@@ -64,55 +59,8 @@ div#content > div.text-content {
   text-align: left;
 }
 
-div#content > div.text-content > p {
-  text-align: justify;
-}
-
-
 .App-link {
-  color: #61dafb;
 }
-
-form.registration-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  margin-left: 25%;
-  margin-right: 25%;
-}
-
-label.registration-form {
-  display: block;
-  margin-bottom: 1em;
-}
-
-label.registration-form > span {
-  display: inline-block; 
-}
-
-label.registration-form > input {
-  display: block;
-  width: 25em;
-  margin-bottom: 1em;
-
-}
-
-input.avatar-field {
-  display: flex;
-  align-items: center;
-}
-
-input.avatar-field {
-  margin-right: 5em;
-}
-
-form.registration-form > img.avatar {
-  position: absolute;
-  margin-left: 25em;
-  float: left;
-}
-
 
 img.avatar {
   width: 100px;
@@ -120,6 +68,12 @@ img.avatar {
   border-radius: 50%;
   position: relative;
   top: 25px;
+}
+
+img.avatar-large {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
 }
 
 .menu-container {

@@ -85,7 +85,7 @@ function UserMenu({ updateUser }) {
     return (
         <div>
             <img className="avatar"
-                src={user ? user.avatar_url : "/anonymous-user.svg"}
+                src={user ? (user.avatar_url ? user.avatar_url : "user-no-avatar.svg") : "/anonymous-user.svg"}
                 alt={user ? user.display_name : "Not logged in"}
                 onMouseDown={handleAvatarClick}
             />

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Menu } from 'primereact/menu';
+
 import backendAxios from './Backend';
 
 function UserMenu({ updateUser }) {
@@ -56,8 +58,6 @@ function UserMenu({ updateUser }) {
             await backendAxios.post('/user/logout', {});
             setUser(null);
             updateUser(null);
-            setIsMenuOpen(false);
-            //navigate('/login');
         } catch (error) {
             console.error('There was an error!', error);
         }
@@ -69,9 +69,9 @@ function UserMenu({ updateUser }) {
 
     useEffect(() => {
         function handleClickOutside(event) {
-            if (menuRef.current && !menuRef.current.contains(event.target)) 
+            if (menuRef.current && !menuRef.current.contains(event.target))
                 setIsMenuOpen(false);
-            
+
         }
 
         // Bind the event listener
@@ -82,21 +82,32 @@ function UserMenu({ updateUser }) {
         };
     }, [menuRef]);
 
+    const items = [
+        {
+            label: 'Logout',
+            icon: 'pi pi-fw pi-sign-out',
+            command: () => { handleLogout(); setIsMenuOpen(false); },            
+            userRequired: true
+        },
+        {
+            label: 'Login',
+            icon: 'pi pi-fw pi-sign-in',
+            command: () => { handleLogin(); setIsMenuOpen(false); },
+            userRequired: false
+        }
+        // Add more items here as needed
+    ];
+
     return (
         <div>
             <img className="avatar"
-                src={user ? user.avatar_url : "/anonymous-user.svg"}
+                src={user ? (user.avatar_url ? user.avatar_url : "user-no-avatar.svg") : "/anonymous-user.svg"}
                 alt={user ? user.display_name : "Not logged in"}
                 onMouseDown={handleAvatarClick}
             />
             {isMenuOpen && (
-                <div className="menu-container" ref={menuRef}>
-                    <div className="menu">
-                        <ul onClick={() => setIsMenuOpen(false)}>
-                            {user && <li onClick={handleLogout}>Logout</li>}
-                            {!user && <li onClick={handleLogin}>Login</li>}
-                        </ul>
-                    </div>
+                <div class="menu-container" ref={menuRef}>
+                    <Menu model={items.filter(item => item.userRequired === !!user)} className="menu" />
                 </div>
             )}
         </div>

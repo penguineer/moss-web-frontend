@@ -3,6 +3,15 @@
 > This is the Web UI Frontend for [MOSS](https://github.com/penguineer/moss).
 
 
+## Configuration
+
+The Docker container can be configured using environment variables:
+
+* `REACT_APP_WEB_BACKEND`: URL to the Web Backend (default: `http://localhost:8080`)
+
+Please note that this configuration is not available when the app is run locally. In this case configuration variables will have their default values.
+
+
 ## Development
 
 The Web UI is based on [React](https://reactjs.org/) and requires [NodeJS](https://nodejs.org/en/) > 14.
@@ -33,6 +42,19 @@ This launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ## Deployment
+
+### Run with Docker
+
+An HTTP daemon serving the static content can be run as follows:
+
+```bash
+docker run --rm \
+  -e REACT_APP_WEB_BACKEND="web backend uri" \
+  -p 8080:80 \
+  mrtux/moss-web-frontend:latest
+```
+
+Note that the default API gateway points at `http://localhost:8080/` and therefore will not be available in the Docker container. Please don't forget to set a working URL for the API Gateway here.
 
 ### Build with npm
 

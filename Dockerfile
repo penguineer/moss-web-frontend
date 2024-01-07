@@ -7,6 +7,8 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package.json ./
 COPY package-lock.json ./
+COPY webpack.config.js ./
+COPY .babelrc ./
 
 RUN npm --no-audit --no-fund ci
 
